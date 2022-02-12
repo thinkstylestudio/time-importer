@@ -27,7 +27,6 @@ class Import extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
      */
     public function handle()
     {
@@ -69,15 +68,14 @@ class Import extends Command
      * @param Schedule $schedule
      * @return void
      */
-    public
-    function schedule(
+    public function schedule(
         Schedule $schedule
     ): void {
         // $schedule->command(static::class)->everyMinute();
     }
 
     /**
-     * Convert CSV to array.
+     * Convert CSV to Collection.
      *
      * @param string $csv
      * @return Collection
@@ -85,7 +83,7 @@ class Import extends Command
     private
     function csvToCollection(
         $csv
-    ) {
+    ): Collection {
         $data = [];
 
         if (($handle = fopen($csv, 'rb')) !== false) {
